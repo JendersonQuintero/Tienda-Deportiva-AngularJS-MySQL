@@ -1,0 +1,9 @@
+#gridContainer {
+  padding: 20px;
+}
+.grid-row > div {
+  border: 1px solid lightgrey;
+  padding: 10px;
+  background-color: aliceblue;
+  margin: 5px 0;
+}

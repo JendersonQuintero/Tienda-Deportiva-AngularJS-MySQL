@@ -1,0 +1,42 @@
+<h2>Tu carrito</h2>
+<div ng-controller="ctrlResumenCarrito">
+    <div class="alert alert-warning" ng-show="datosCarrito.length == 0">
+        No hay productos en tu carrito.
+        <a href="#/productos" class="alert-link">Click aquí para ir al catálogo</a>
+    </div>
+    <div ng-hide="datosCarrito.length == 0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Cantidad</th>
+                    <th>Item</th>
+                    <th class="text-right">Precio</th>
+                    <th class="text-right">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in datosCarrito">
+                    <td class="text-center">{{item.count}}</td>
+                    <td class="text-left">{{item.nombre}}</td>
+                    <td class="text-right">{{item.precio | currency}}</td>
+                    <td class="text-right">{{ (item.precio * item.count) | currency}}</td>
+                    <td>
+                        <button ng-click="remover(item.id)" class="btn btn-sm btn-warning">Remover</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total:</td>
+                    <td class="text-right">
+                        {{total() | currency}}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="text-center">
+            <a class="btn btn-primary" href="#/productos">Continua comprando</a>
+            <a class="btn btn-primary" href="#/realizar-compra">Realize su compra ahora</a>
+        </div>
+    </div>
+</div>
